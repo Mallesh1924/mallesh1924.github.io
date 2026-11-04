@@ -1,25 +1,69 @@
-<!DOCTYPE html><html lang="kk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>QOSSHY JOLY</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}body{background:#f6f6f3}.hero{background:#0f0f0f;color:#fff;padding:24px;text-align:center}.logo{width:88px;height:88px;background:#FFB700;border-radius:22px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:32px;color:#111}.box{background:#fff;border-radius:20px;padding:18px;margin:12px auto;max-width:760px;box-shadow:0 8px 30px rgba(0,0,0,.07)}.input{width:100%;padding:15px;border:2px solid #eee;border-radius:12px;font-size:15px;margin:6px 0;background:#fafafa}.btn{width:100%;padding:16px;border-radius:14px;font-weight:800;border:none;font-size:16px;cursor:pointer;margin-top:8px;display:block;text-align:center;text-decoration:none}.btn-green{background:#25D366;color:#fff}.btn-yellow{background:#FFB700;color:#111}.price{text-align:center;padding:14px;background:#111;color:#fff;border-radius:12px;margin:8px 0}.price b{font-size:30px;color:#FFB700}.order-card{background:#111;color:#fff;border-radius:16px;padding:16px;margin:10px 0;border-left:5px solid #FFB700}</style></head><body>
+<!DOCTYPE html><html lang="kk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>QOSSHY JOLY</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}body{background:#f6f6f3}.hero{background:#0f0f0f;color:#fff;padding:24px;text-align:center}.logo{width:88px;height:88px;background:#FFB700;border-radius:22px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:32px;color:#111}.box{background:#fff;border-radius:20px;padding:18px;margin:12px auto;max-width:760px;box-shadow:0 8px 30px rgba(0,0,0,.07)}.input{width:100%;padding:15px;border:2px solid #eee;border-radius:12px;font-size:15px;margin:6px 0;background:#fafafa}.btn{width:100%;padding:16px;border-radius:14px;font-weight:800;border:none;font-size:16px;cursor:pointer;margin-top:8px;display:block;text-align:center;text-decoration:none}.btn-green{background:#25D366;color:#fff}.btn-yellow{background:#FFB700;color:#111}.price{text-align:center;padding:14px;background:#111;color:#fff;border-radius:12px;margin:8px 0}.price b{font-size:30px;color:#FFB700}.order-card{background:#111;color:#fff;border-radius:16px;padding:16px;margin:10px 0;border-left:5px solid #FFB700;animation:pop .3s}.voice-btn{background:#ff3b30;color:#fff;padding:12px;border-radius:10px;border:none;font-weight:800;width:100%;margin-top:8px}@keyframes pop{from{transform:scale(.9)}to{transform:scale(1)}}</style></head><body>
 <div class="hero"><div class="logo">QJ</div><h1>QOSSHY <span style="color:#FFB700">JOLY</span></h1><p style="color:#aaa;font-size:12px" id="topInfo">Қосшы ↔ Астана • Ақжол: +7 708 742 6861</p></div>
 <div id="clientView"><div class="box"><h3>🚕 Қайда барасыз?</h3><select class="input" id="from"><option>Қосшы</option><option>Лесная Поляна</option><option>Астана - Есіл</option><option>Астана - Хан Шатыр</option><option>Астана - Вокзал</option></select><select class="input" id="to"><option>Астана - Есіл</option><option>Астана - Хан Шатыр</option><option>Қосшы</option><option>Лесная Поляна</option></select><input type="range" min="500" max="5000" step="100" value="1500" id="r" style="width:100%;accent-color:#FFB700"><div class="price"><b id="pt">1500 тг</b></div><input type="number" class="input" id="p" value="1500"><input type="tel" class="input" id="ph" placeholder="Номеріңіз: +7 7XX XXX XX XX"><button class="btn btn-green" onclick="sendOrder()">🟢 Такси шақыру — Ақжол</button><p id="status" style="text-align:center;margin-top:12px;font-size:14px;color:#0a6b3c;font-weight:600"></p></div></div>
-<div id="driverView" style="display:none"><div class="box" style="background:#111;color:#fff"><h3 style="color:#FFB700">👨‍✈️ Жүргізуші - Ақжол</h3><p style="color:#0f0;font-size:12px">+7 708 742 6861</p><div id="loginBox"><input type="password" id="driverPass" class="input" placeholder="Пароль: akzhol2026"><button class="btn btn-yellow" onclick="checkPass()">Кіру</button></div><div id="driverPanel" style="display:none"><p style="font-size:12px;color:#aaa">Бетті ашық ұстаңыз!</p><p style="font-size:11px;color:#0f0" id="liveStatus">● LIVE • Дыбыс ҚОСУЛЫ</p><button class="btn btn-yellow" onclick="loadOrders(true)">🔄 Жаңарту</button></div></div><div class="box" id="ordersBox" style="display:none"><div id="ordersList"></div></div></div>
+<div id="driverView" style="display:none"><div class="box" style="background:#111;color:#fff"><h3 style="color:#FFB700">👨‍✈️ Жүргізуші - Ақжол</h3><p style="color:#0f0;font-size:12px">+7 708 742 6861</p><div id="loginBox"><input type="password" id="driverPass" class="input" placeholder="Пароль: akzhol2026"><button class="btn btn-yellow" onclick="checkPass()">Кіру</button></div><div id="driverPanel" style="display:none"><p style="font-size:12px;color:#aaa">Бетті ашық ұстаңыз!</p><p style="font-size:11px;color:#0f0" id="liveStatus">● LIVE • Дауыс + Діріл ҚОСУЛЫ</p><button class="btn btn-yellow" onclick="loadOrders(true)">🔄 Жаңарту</button><button class="voice-btn" onclick="speakLoud('Дауыс тексеру! Жаңа тапсырыс бар!')">🔊 ДАУЫСТЫ ТЕКСЕРУ</button><button class="voice-btn" style="background:#333" onclick="stopAlarm()">🔇 Дыбысты өшіру</button></div></div><div class="box" id="ordersBox" style="display:none"><div id="ordersList"></div></div></div>
 <script>
 const TOPIC='qosshy-joly-akzhol-7087426861';
 const DRIVER_WA='77087426861';
 const isDriver=new URLSearchParams(location.search).get('driver')==='akzhol';
 if(isDriver){document.getElementById('clientView').style.display='none';document.getElementById('driverView').style.display='block';document.getElementById('topInfo').textContent='Жүргізуші режимі - Ақжол';}
-function checkPass(){if(document.getElementById('driverPass').value==='akzhol2026'){document.getElementById('loginBox').style.display='none';document.getElementById('driverPanel').style.display='block';document.getElementById('ordersBox').style.display='block';loadOrders();setInterval(()=>loadOrders(false),4000);try{const es=new EventSource('https://ntfy.sh/'+TOPIC+'/sse');es.onmessage=()=>{loadOrders(false);playBeep();}}catch(e){}}else alert('Пароль қате! akzhol2026');}
+
+let alarmInterval=null;
+let audioLoop=null;
+
+function speakLoud(text){
+  if('speechSynthesis' in window){
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang='kk-KZ'; u.rate=1.1; u.volume=1; u.pitch=1.2;
+    speechSynthesis.speak(u);
+    // 2 рет қайталау
+    setTimeout(()=>{ speechSynthesis.speak(new SpeechSynthesisUtterance(text)); }, 1200);
+  }
+}
+
+function playBeep(){
+  // 1. Діріл
+  if(navigator.vibrate) navigator.vibrate([1000,300,1000,300,2000]);
+  // 2. Дауыс
+  speakLoud('Жаңа тапсырыс! Жаңа тапсырыс түсті!');
+  // 3. Сирена дыбысы 3 рет
+  try{
+    const ctx = new (window.AudioContext||window.webkitAudioContext)();
+    let count=0;
+    alarmInterval=setInterval(()=>{
+      const o=ctx.createOscillator(); const g=ctx.createGain();
+      o.type='square'; o.frequency.value=count%2==0?900:1400;
+      o.connect(g); g.connect(ctx.destination);
+      g.gain.value=1; o.start(); setTimeout(()=>{o.stop();},400);
+      count++; if(count>7){clearInterval(alarmInterval);}
+    },500);
+  }catch(e){}
+  // 4. Google beep
+  const a=new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');
+  a.loop=true; a.play().catch(()=>{}); audioLoop=a;
+  setTimeout(()=>{ try{a.pause();}catch(e){} }, 8000);
+}
+
+function stopAlarm(){
+  if(alarmInterval) clearInterval(alarmInterval);
+  if(audioLoop) try{audioLoop.pause();}catch(e){}
+  speechSynthesis.cancel();
+  if(navigator.vibrate) navigator.vibrate(0);
+}
+
+function checkPass(){if(document.getElementById('driverPass').value==='akzhol2026'){document.getElementById('loginBox').style.display='none';document.getElementById('driverPanel').style.display='block';document.getElementById('ordersBox').style.display='block';loadOrders();setInterval(()=>loadOrders(false),4000);try{const es=new EventSource('https://ntfy.sh/'+TOPIC+'/sse');es.onmessage=()=>{loadOrders(false);playBeep();}}catch(e){} // Бірінші кіргенде дыбысқа рұқсат алу
+  speakLoud('Жүйе қосылды, тапсырыс күтілуде'); }else alert('Пароль қате! akzhol2026');}
+
 async function sendOrder(){
-  const f=document.getElementById('from').value,
-        t=document.getElementById('to').value,
-        price=document.getElementById('p').value,
-        ph=document.getElementById('ph').value;
+  const f=document.getElementById('from').value,t=document.getElementById('to').value,price=document.getElementById('p').value,ph=document.getElementById('ph').value;
   if(!ph||ph.length<10){alert('Номер жазыңыз!');return}
   const msg=`${f}→${t}|${price}|${ph}|${new Date().toLocaleTimeString()}`;
-  const url = 'https://ntfy.sh/'+TOPIC+'?title=JANA+TAPSIRIS!&priority=high&tags=taxi,rotating_light&click=https://fokuskadam-max.github.io/?driver=akzhol';
+  const url = 'https://ntfy.sh/'+TOPIC+'?title=JANA+TAPSIRIS!&priority=max&tags=rotating_light,taxi,loudspeaker&click=https://fokuskadam-max.github.io/?driver=akzhol';
   await fetch(url,{method:'POST',body:msg});
   document.getElementById('status').innerHTML=`✅ Жіберілді! Ақжол хабарласады<br><a href="tel:+7${DRIVER_WA}">📞 +7 708 742 6861</a>`;
   window.open(`https://wa.me/${DRIVER_WA}?text=QOSSHY%20JOLY:%20${encodeURIComponent(f+'→'+t+' '+price+'тг Клиент:'+ph)}`,'_blank');
 }
 async function loadOrders(forceBeep){try{const res=await fetch('https://ntfy.sh/'+TOPIC+'/json?poll=1');const text=await res.text();const lines=text.trim().split('\n').filter(Boolean);const orders=lines.map(l=>{try{return JSON.parse(l)}catch{return null}}).filter(x=>x&&x.message).reverse();const list=document.getElementById('ordersList');if(orders.length===0){list.innerHTML='<p style="color:#888">Әзірге тапсырыс жоқ</p>';return}const old=parseInt(localStorage.getItem('qj_f')||'0');if(orders.length>old){playBeep();localStorage.setItem('qj_f',orders.length)}else if(forceBeep)playBeep();list.innerHTML='';orders.slice(0,30).forEach(o=>{const p=o.message.split('|');if(p.length<3)return;const [route,price,phone,time]=p;const d=document.createElement('div');d.className='order-card';d.innerHTML=`<b>${route}</b> • <span style="color:#FFB700">${price}тг</span><br>📞 <a href="tel:${phone}" style="color:#25D366">${phone}</a> • ${time}<br><div style="margin-top:10px"><a href="https://wa.me/${phone.replace(/\+/g,'')}?text=SALEM!%20AKZHOL%20OK!%2010%20min" style="background:#25D366;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none;font-size:13px;display:inline-block;margin:3px">✅ ОК жазу</a><a href="tel:${phone}" style="background:#fff;color:#111;padding:10px 14px;border-radius:10px;text-decoration:none;font-size:13px;display:inline-block;margin:3px">📞 Қоңырау</a></div>`;list.appendChild(d);});}catch(e){}}
-function playBeep(){const a=new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');a.play().catch(()=>{});}const r=document.getElementById('r'),p=document.getElementById('p'),pt=document.getElementById('pt');r.addEventListener('input',e=>{pt.textContent=e.target.value+' тг';p.value=e.target.value});p.addEventListener('input',e=>{pt.textContent=e.target.value+' тг';r.value=e.target.value});
+const r=document.getElementById('r'),p=document.getElementById('p'),pt=document.getElementById('pt');r.addEventListener('input',e=>{pt.textContent=e.target.value+' тг';p.value=e.target.value});p.addEventListener('input',e=>{pt.textContent=e.target.value+' тг';r.value=e.target.value});
 </script></body></html>
