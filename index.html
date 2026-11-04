@@ -4,195 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>QOSSHY JOLY</title>
-
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- background:#f5f5f2;
- font-family:Arial,sans-serif;
-}
-.hero{
- background:#111;
- color:white;
- text-align:center;
- padding:25px;
-}
-.logo{
- background:#ffb700;
- color:#111;
- width:75px;height:75px;
- margin:auto;
- border-radius:20px;
- display:grid;
- place-items:center;
- font-size:30px;
- font-weight:900;
-}
-.box{
- background:white;
- padding:18px;
- margin:12px auto;
- max-width:650px;
- border-radius:18px;
- box-shadow:0 4px 20px #0001;
-}
-input,select{
- width:100%;
- padding:14px;
- margin:7px 0;
- border:1px solid #ddd;
- border-radius:10px;
- font-size:16px;
-}
-button{
- width:100%;
- padding:15px;
- margin-top:9px;
- border:0;
- border-radius:12px;
- font-size:16px;
- font-weight:bold;
- cursor:pointer;
-}
-.yellow{background:#ffb700;color:#111}
-.green{background:#25d366;color:white}
-.dark{background:#111;color:white}
-.order{
- background:#111;
- color:white;
- padding:16px;
- border-radius:14px;
- margin:12px 0;
- border-left:5px solid #ffb700;
-}
-.order button{margin-top:8px}
+*{box-sizing:border-box} body{margin:0;background:#f5f5f2;font-family:Arial,sans-serif}
+.hero{background:#111;color:white;text-align:center;padding:25px}
+.logo{background:#ffb700;color:#111;width:75px;height:75px;margin:auto;border-radius:20px;display:grid;place-items:center;font-size:30px;font-weight:900}
+.box{background:white;padding:18px;margin:12px auto;max-width:650px;border-radius:18px;box-shadow:0 4px 20px #0001}
+input,select{width:100%;padding:14px;margin:7px 0;border:1px solid #ddd;border-radius:10px;font-size:16px}
+button{width:100%;padding:15px;margin-top:9px;border:0;border-radius:12px;font-size:16px;font-weight:bold;cursor:pointer}
+.yellow{background:#ffb700;color:#111}.green{background:#25d366;color:white}.dark{background:#111;color:white}.blue{background:#0a84ff;color:white}
+.order{background:#111;color:white;padding:16px;border-radius:14px;margin:12px 0;border-left:5px solid #ffb700}
 .hidden{display:none}
-.price{
- background:#111;
- color:#ffb700;
- padding:15px;
- text-align:center;
- font-size:25px;
- border-radius:12px;
-}
+.price{background:#111;color:#ffb700;padding:15px;text-align:center;font-size:25px;border-radius:12px}
+#tracking{background:#111;color:white;padding:18px;border-radius:16px;margin-top:15px;text-align:center;border:2px solid #ffb700}
 </style>
 </head>
-
 <body>
-
-<div class="hero">
- <div class="logo">QJ</div>
- <h1>QOSSHY <span style="color:#ffb700">JOLY</span></h1>
- <p>Қосшы такси қызметі</p>
-</div>
-
-<!-- КЛИЕНТ БЕТІ -->
+<div class="hero"><div class="logo">QJ</div><h1>QOSSHY <span style="color:#ffb700">JOLY</span></h1><p>Қосшы такси қызметі</p></div>
 
 <div id="clientView">
-
 <div class="box">
 <h3>🚕 Қайда барасыз?</h3>
-
-<select id="from">
-<option>Қосшы</option>
-<option>Лесная Поляна</option>
-<option>Тайтөбе</option>
-<option>Астана</option>
-</select>
-
-<select id="to">
-<option>Астана - Есіл</option>
-<option>Астана - Мега</option>
-<option>Астана - Хан Шатыр</option>
-<option>Астана - Нұрлы Жол</option>
-<option>Қосшы</option>
-</select>
-
-<select id="persons">
-<option value="1">1 адам</option>
-<option value="2">2 адам</option>
-<option value="3">3 адам</option>
-<option value="4">4 адам</option>
-</select>
-
-<select id="pay">
-<option>Қолма-қол</option>
-<option>Kaspi</option>
-</select>
-
-<input id="phone" placeholder="Телефон нөміріңіз"
-type="tel">
-
+<select id="from"><option>Қосшы</option><option>Лесная Поляна</option><option>Тайтөбе</option><option>Астана</option></select>
+<select id="to"><option>Астана - Есіл</option><option>Астана - Мега</option><option>Астана - Хан Шатыр</option><option>Астана - Нұрлы Жол</option><option>Қосшы</option></select>
+<select id="persons"><option value="1">1 адам</option><option value="2">2 адам</option><option value="3">3 адам</option><option value="4">4 адам</option></select>
+<select id="pay"><option>Қолма-қол</option><option>Kaspi</option></select>
+<input id="phone" placeholder="Телефон нөміріңіз" type="tel">
 <input id="price" type="number" value="1500">
-
-<div class="price">
-<span id="showPrice">1500 тг</span>
-</div>
-
-<button class="green" onclick="sendOrder()">
-🚕 ТАКСИ ШАҚЫРУ
-</button>
-
+<div class="price"><span id="showPrice">1500 тг</span></div>
+<button class="green" onclick="sendOrder()">🚕 ТАКСИ ШАҚЫРУ</button>
 <p id="clientStatus"></p>
-
 <div id="tracking" class="hidden">
 <h3 id="trackingTitle">⏳ Жүргізуші ізделуде</h3>
-<p id="trackingInfo"></p>
-<a id="driverCall"></a>
-</div>
-
+<p id="trackingInfo">Күте тұрыңыз</p>
+<a id="driverCall" class="green" style="display:block;padding:12px;border-radius:10px;text-decoration:none;margin-top:10px"></a>
 </div>
 </div>
-
-<!-- ЖҮРГІЗУШІ БЕТІ -->
+</div>
 
 <div id="driverView" class="hidden">
-
 <div class="box">
 <h3>👨‍✈️ ЖҮРГІЗУШІ БӨЛІМІ</h3>
-
 <input id="driverEmail" placeholder="Email">
-<input id="driverPassword" type="password"
-placeholder="Пароль">
-
-<button class="yellow" onclick="loginDriver()">
-КІРУ
-</button>
-
-<button class="dark" onclick="logoutDriver()">
-Шығу
-</button>
+<input id="driverPassword" type="password" placeholder="Пароль">
+<button class="yellow" onclick="loginDriver()">КІРУ</button>
+<button class="dark" onclick="logoutDriver()">Шығу</button>
+<div class="row" style="display:flex;gap:8px;margin-top:10px"><button class="dark" onclick="stopAlarm()" style="flex:1">🔇 Дауысты өшіру</button><button class="yellow" onclick="clearOrders()" style="flex:1">🗑️ Тазалау</button></div>
 <p id="driverStatus"></p>
 </div>
-
-<div class="box hidden" id="driverPanel">
-<h3>📋 ЖАҢА ТАПСЫРЫСТАР</h3>
-<div id="orders"></div>
-</div>
-
+<div class="box hidden" id="driverPanel"><h3>📋 ЖАҢА ТАПСЫРЫСТАР <span id="cnt">0</span></h3><div id="orders"></div></div>
 </div>
 
 <script type="module">
-
-import {initializeApp}
-from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-
-import {
-getDatabase,ref,push,onValue,update,
-serverTimestamp,runTransaction
-}
-from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
-
-import {
-getAuth,signInWithEmailAndPassword,signOut,
-onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-
-// ==================================
-// FIREBASE БАПТАУЛАРЫҢДЫ ОСЫ ЖЕРГЕ ҚОЙ
-// ==================================
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+import {getDatabase,ref,push,onValue,update,serverTimestamp,get} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-database.js";
+import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
 const firebaseConfig = {
 apiKey: "ОСЫ ЖЕРГЕ_API_KEY",
@@ -207,30 +72,37 @@ appId: "ОСЫ ЖЕРГЕ_APP_ID"
 const app=initializeApp(firebaseConfig);
 const db=getDatabase(app);
 const auth=getAuth(app);
-
 const ordersRef=ref(db,"orders");
 
-const isDriver=
-new URLSearchParams(location.search).has("driver");
-
+const isDriver=new URLSearchParams(location.search).has("driver");
 if(isDriver){
 document.getElementById("clientView").classList.add("hidden");
 document.getElementById("driverView").classList.remove("hidden");
 }
 
-// ==================================
-// КЛИЕНТ ТАПСЫРЫС БЕРУ
-// ==================================
+// БАҒА КӨРСЕТУ
+document.getElementById("price").addEventListener("input",e=>{document.getElementById("showPrice").textContent=e.target.value+" тг"});
 
-window.sendOrder=async function(){
-
-const phone=document.getElementById("phone").value.trim();
-
-if(phone.length<10){
-alert("Телефон нөмірін дұрыс жазыңыз");
-return;
+// ==== ДАУЫС 1 РЕТ ҚАНА ====
+let lastVoiceId=null, isAlarmOn=false;
+function speakOnce(t){
+  try{speechSynthesis.cancel()}catch(e){}
+  const u=new SpeechSynthesisUtterance(t); u.lang="kk-KZ"; u.rate=1; speechSynthesis.speak(u);
 }
+function playNewOrderSound(id){
+  if(isAlarmOn || lastVoiceId===id) return;
+  lastVoiceId=id; isAlarmOn=true;
+  if(navigator.vibrate) navigator.vibrate([800,200,800]);
+  speakOnce("Жаңа тапсырыс түсті");
+  setTimeout(()=>{isAlarmOn=false},7000);
+}
+window.stopAlarm=()=>{speechSynthesis.cancel(); isAlarmOn=false; if(navigator.vibrate) navigator.vibrate(0); lastVoiceId="muted"; setTimeout(()=>{lastVoiceId=null},5000);}
+window.clearOrders=()=>{document.getElementById("orders").innerHTML="";}
 
+// ==== КЛИЕНТ ====
+window.sendOrder=async function(){
+const phone=document.getElementById("phone").value.trim();
+if(phone.length<10){alert("Телефон дұрыс емес");return;}
 const order={
 from:document.getElementById("from").value,
 to:document.getElementById("to").value,
@@ -240,44 +112,27 @@ persons:document.getElementById("persons").value,
 pay:document.getElementById("pay").value,
 status:"new",
 createdAt:Date.now(),
-driver:null
+driver:null, driverName:null, driverPhone:null
 };
-
 try{
-
-const newOrder=push(ordersRef);
-
-await update(ref(db,"orders/"+newOrder.key),{
-...order,
-createdAt:serverTimestamp()
-});
-
-localStorage.setItem("myOrder",newOrder.key);
-
-document.getElementById("clientStatus").textContent=
-"✅ Тапсырысыңыз қабылданды!";
-
+const newRef=push(ordersRef);
+await update(ref(db,"orders/"+newRef.key),{...order, createdAt:serverTimestamp()});
+localStorage.setItem("myOrder",newRef.key);
+document.getElementById("clientStatus").textContent="✅ Тапсырысыңыз қабылданды!";
 document.getElementById("tracking").classList.remove("hidden");
-
-listenClient(newOrder.key);
-
-}catch(e){
-alert("Қате: "+e.message);
-}
-
+document.getElementById("trackingTitle").textContent="⏳ Жүргізуші ізделуде";
+document.getElementById("trackingInfo").textContent="Күте тұрыңыз, жақын арада хабарласады";
+listenClient(newRef.key);
+}catch(e){alert("Қате: "+e.message);}
 };
-
-// ==================================
-// КЛИЕНТ ТАПСЫРЫСЫН БАҚЫЛАУ
-// ==================================
 
 function listenClient(id){
-
+let lastStatus="";
 onValue(ref(db,"orders/"+id),snap=>{
-
-if(!snap.exists())return;
-
+if(!snap.exists()) return;
 const o=snap.val();
+if(o.status===lastStatus) return; // бір статусты 2 рет айтпау
+lastStatus=o.status;
 
 const title=document.getElementById("trackingTitle");
 const info=document.getElementById("trackingInfo");
@@ -286,113 +141,103 @@ const call=document.getElementById("driverCall");
 if(o.status==="new"){
 title.textContent="⏳ Жүргізуші ізделуде";
 info.textContent="Күте тұрыңыз";
+call.textContent=""; call.removeAttribute("href");
 }
-
 if(o.status==="accepted"){
 title.textContent="🚕 Жүргізуші табылды!";
-info.textContent="Жүргізуші: "+o.driverName;
-call.textContent="📞 Жүргізушіге қоңырау";
-call.href="tel:"+o.driverPhone;
+info.textContent="Жүргізуші: "+(o.driverName||"Ақжол")+" қабылдады";
+call.textContent="📞 "+(o.driverPhone||"Қоңырау шалу");
+call.href="tel:"+(o.driverPhone||"");
+call.style.background="#25d366"; call.style.color="white";
+if(lastStatus!=="accepted") speakOnce("Жүргізуші табылды");
 }
-
 if(o.status==="onway"){
 title.textContent="🚗 Көлік жолда!";
-info.textContent="Жүргізуші сізге келе жатыр";
+info.textContent="Жүргізуші сізге келе жатыр, 10 минут";
+call.textContent="📞 Жүргізуші: "+(o.driverPhone||"");
+call.href="tel:"+(o.driverPhone||"");
+if(lastStatus!=="onway") speakOnce("Көлік жолда, 10 минутта жетеді");
 }
-
 if(o.status==="arrived"){
 title.textContent="📍 КӨЛІК КЕЛДІ!";
-info.textContent="Төмен түсіңіз";
+info.textContent="Төмен түсіңіз, көлік күтіп тұр";
+if(lastStatus!=="arrived") speakOnce("Көлік келді, шығыңыз");
 }
-
 if(o.status==="cancelled"){
-title.textContent="❌ Тапсырыс тоқтатылды";
+title.textContent="❌ Тоқтатылды";
 info.textContent="Қайта тапсырыс бере аласыз";
 }
-
 });
-
 }
 
-// ==================================
-// ЖҮРГІЗУШІ КІРУ
-// ==================================
-
+// ==== ЖҮРГІЗУШІ КІРУ ====
 window.loginDriver=async function(){
-
 const email=document.getElementById("driverEmail").value;
 const password=document.getElementById("driverPassword").value;
-
-try{
-await signInWithEmailAndPassword(auth,email,password);
-}catch(e){
-alert("Кіру қатесі: "+e.message);
-}
-
+try{await signInWithEmailAndPassword(auth,email,password);}catch(e){alert("Кіру қатесі: "+e.message);}
 };
-
-window.logoutDriver=async function(){
-await signOut(auth);
-};
-
-let unsubscribeOrders=null;
+window.logoutDriver=async function(){await signOut(auth);};
 
 onAuthStateChanged(auth,user=>{
-
-if(!isDriver)return;
-
+if(!isDriver) return;
 if(user){
-
 document.getElementById("driverPanel").classList.remove("hidden");
-document.getElementById("driverStatus").textContent=
-"✅ Жүйеге кірдіңіз";
-
+document.getElementById("driverStatus").textContent="✅ Кірдіңіз: "+user.email;
 loadDriverOrders(user);
-
 }else{
-
 document.getElementById("driverPanel").classList.add("hidden");
-document.getElementById("driverStatus").textContent=
-"Жүйеге кіріңіз";
-
-if(unsubscribeOrders){
-unsubscribeOrders();
-unsubscribeOrders=null;
+document.getElementById("driverStatus").textContent="Жүйеге кіріңіз";
 }
-
-}
-
 });
 
-// ==================================
-// ЖҮРГІЗУШІ ТАПСЫРЫСТАРЫ
-// ==================================
-
+// ==== ЖҮРГІЗУШІ ТАПСЫРЫСТАР ====
 function loadDriverOrders(user){
-
 const list=document.getElementById("orders");
-
-unsubscribeOrders=onValue(ordersRef,snap=>{
-
+onValue(ordersRef,snap=>{
 list.innerHTML="";
-
-if(!snap.exists()){
-list.innerHTML="Тапсырыс жоқ";
-return;
-}
-
+if(!snap.exists()){list.innerHTML="Тапсырыс жоқ"; document.getElementById("cnt").textContent="0"; return;}
 const data=snap.val();
-
+let count=0;
 Object.entries(data).reverse().forEach(([id,o])=>{
+if(o.status==="cancelled"||o.status==="arrived"||o.status==="done") return;
+if(o.status==="accepted" && o.driver!==user.uid) return; // басқа жүргізуші алған
 
-if(o.status==="cancelled"||o.status==="arrived")return;
-
-const div=document.createElement("div");
-div.className="order";
-
-const title=document.createElement("h3");
-title.textContent=o.from+" → "+o.to;
-
-const details=document.createElement("p");
-details.textContent=
-o.price+" тг | "+o.persons
+if(o.status==="new"){
+count++;
+playNewOrderSound(id);
+}
+const div=document.createElement("div"); div.className="order";
+div.innerHTML=`
+<h3>${o.from} → ${o.to}</h3>
+<p>💰 ${o.price} тг | 👤 ${o.persons} адам | ${o.pay}</p>
+<p>📞 <a href="tel:${o.phone}" style="color:#25d366;font-size:18px;font-weight:800">${o.phone}</a> | 🕒 ${new Date(o.createdAt||Date.now()).toLocaleTimeString()}</p>
+<p style="font-size:12px;color:#aaa">Статус: ${o.status}</p>
+`;
+if(o.status==="new"){
+const b1=document.createElement("button"); b1.className="yellow"; b1.textContent="🟢 Алдым";
+b1.onclick=async()=>{
+const cur=await get(ref(db,"orders/"+id)); if(cur.val().status!=="new"){alert("Басқа жүргізуші алып қойды"); return;}
+await update(ref(db,"orders/"+id),{status:"accepted", driver:user.uid, driverName:user.email.split("@")[0], driverPhone:"7087426861", acceptedAt:serverTimestamp()});
+};
+div.appendChild(b1);
+}
+if(o.status==="accepted" && o.driver===user.uid){
+const b2=document.createElement("button"); b2.className="blue"; b2.textContent="🚗 Жолдамын (Көлік жолда)";
+b2.onclick=async()=>{await update(ref(db,"orders/"+id),{status:"onway", onwayAt:serverTimestamp()});};
+const b3=document.createElement("button"); b3.className="dark"; b3.textContent="❌ Отказ";
+b3.onclick=async()=>{await update(ref(db,"orders/"+id),{status:"new", driver:null});};
+div.appendChild(b2); div.appendChild(b3);
+}
+if(o.status==="onway" && o.driver===user.uid){
+const b4=document.createElement("button"); b4.className="green"; b4.textContent="📍 Келдім";
+b4.onclick=async()=>{await update(ref(db,"orders/"+id),{status:"arrived", arrivedAt:serverTimestamp()});};
+div.appendChild(b4);
+}
+list.appendChild(div);
+});
+document.getElementById("cnt").textContent=count;
+});
+}
+</script>
+</body>
+</html>
