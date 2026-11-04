@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="kk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>QOSSHY JOLY</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}body{background:#f6f6f3}.hero{background:#0f0f0f;color:#fff;padding:24px;text-align:center}.logo{width:88px;height:88px;background:#FFB700;border-radius:22px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:32px;color:#111}.box{background:#fff;border-radius:20px;padding:18px;margin:12px auto;max-width:760px;box-shadow:0 8px 30px rgba(0,0,0,.07)}.input{width:100%;padding:14px;border:2px solid #eee;border-radius:12px;font-size:15px;margin:6px 0;background:#fafafa}.row{display:flex;gap:8px}.row>*{flex:1}.btn{width:100%;padding:16px;border-radius:14px;font-weight:800;border:none;font-size:16px;cursor:pointer;margin-top:8px;display:block;text-align:center;text-decoration:none}.btn-green{background:#25D366;color:#fff}.btn-yellow{background:#FFB700;color:#111}.price{text-align:center;padding:14px;background:#111;color:#fff;border-radius:12px;margin:8px 0}.price b{font-size:28px;color:#FFB700}.order-card{background:#111;color:#fff;border-radius:16px;padding:16px;margin:10px 0;border-left:6px solid #FFB700}.badge{display:inline-block;padding:4px 8px;border-radius:6px;font-size:11px;font-weight:800;margin:2px}.kassa{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}.kassa div{background:#222;border-radius:12px;padding:12px;text-align:center}.kassa b{color:#FFB700;font-size:18px;display:block}.kassa span{font-size:10px;color:#aaa}.voice-btn{background:#ff3b30;color:#fff;padding:12px;border-radius:10px;border:none;font-weight:800;width:100%;margin-top:8px}</style></head><body>
-<div class="hero"><div class="logo">QJ</div><h1>QOSSHY <span style="color:#FFB700">JOLY</span></h1><p style="color:#aaa;font-size:11px" id="topInfo">Қосшы • Лесная • Тайтөбе • Мега • Азия Парк • Нұрлы Жол • 2 жүргізуші • Касса</p></div>
+<div class="hero"><div class="logo">QJ</div><h1>QOSSHY <span style="color:#FFB700">JOLY</span></h1><p style="color:#aaa;font-size:11px">Қосшы • Лесная • Тайтөбе • Мега • Азия Парк • Нұрлы Жол • 2 жүргізуші</p></div>
 
 <div id="clientView"><div class="box">
 <h3>🚕 Қайда барасыз?</h3>
@@ -13,12 +13,11 @@
 
 <div id="trackBox" style="display:none;background:#111;color:#fff;border-radius:16px;padding:16px;margin-top:12px;text-align:center;border:2px solid #FFB700">
   <div style="font-size:44px" id="trackIcon">⏳</div>
-  <h3 id="trackTitle" style="color:#FFB700">Жүргізуші ізделуде...</h3>
-  <p id="trackText" style="font-size:14px;color:#aaa">Тапсырыс 2 жүргізушіге жіберілді</p>
+  <h3 id="trackTitle" style="color:#FFB700">⏳ Жүргізуші ізделуде...</h3>
+  <p id="trackText" style="font-size:14px;color:#aaa">Тапсырыс жіберілді, күте тұрыңыз</p>
   <div style="background:#222;height:10px;border-radius:10px;margin:14px 0;overflow:hidden"><div id="trackBar" style="height:100%;width:15%;background:#FFB700;transition:1s"></div></div>
   <p style="font-size:28px;font-weight:900" id="trackTimer">--:--</p>
   <a id="trackCall" href="tel:+77087426861" style="display:block;background:#25D366;color:#fff;padding:14px;border-radius:12px;text-decoration:none;margin-top:10px;font-weight:800">📞 Жүргізушіге қоңырау</a>
-  <p style="font-size:11px;color:#666;margin-top:8px">Бетті жаппаңыз, статус автомат жаңарады</p>
 </div>
 </div></div>
 
@@ -39,22 +38,20 @@ const TOPIC='qosshy-joly-akzhol-7087426861';
 const DRIVERS={akzhol:'77087426861', driver2:'77056623133'};
 const DRIVER_PASS={akzhol:'akzhol2026', driver2:'7056623133'};
 const isDriver=new URLSearchParams(location.search).get('driver')!==null;
-if(isDriver){document.getElementById('clientView').style.display='none';document.getElementById('driverView').style.display='block';document.getElementById('topInfo').textContent='Жүргізуші режимі';}
+if(isDriver){document.getElementById('clientView').style.display='none';document.getElementById('driverView').style.display='block';}
 
 let alarmInterval=null,audioLoop=null,timerInt=null;
 function speakLoud(t){if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='kk-KZ';u.rate=1.1;u.volume=1;speechSynthesis.speak(u);}}
 function playBeep(){if(navigator.vibrate)navigator.vibrate([1000,300,1000,300,2000]);speakLoud('Жаңа тапсырыс түсті!');try{const ctx=new (window.AudioContext||window.webkitAudioContext)();let c=0;alarmInterval=setInterval(()=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='square';o.frequency.value=c%2==0?900:1400;o.connect(g);g.connect(ctx.destination);g.gain.value=1;o.start();setTimeout(()=>o.stop(),400);c++;if(c>7)clearInterval(alarmInterval);},500);}catch(e){}const a=new Audio('https://actions.google.com/sounds/v1/alarms/beep_short.ogg');a.loop=true;a.play().catch(()=>{});audioLoop=a;setTimeout(()=>{try{a.pause();}catch(e){}},8000);}
 function stopAlarm(){if(alarmInterval)clearInterval(alarmInterval);if(audioLoop)try{audioLoop.pause();}catch(e){}speechSynthesis.cancel();if(navigator.vibrate)navigator.vibrate(0);}
 function checkPass(){const sel=document.getElementById('driverSelect').value;const pass=document.getElementById('driverPass').value;if(pass===DRIVER_PASS[sel]||pass==='akzhol2026'){document.getElementById('loginBox').style.display='none';document.getElementById('driverPanel').style.display='block';document.getElementById('ordersBox').style.display='block';document.getElementById('kDate').textContent=new Date().toLocaleDateString();updateKassaUI();loadOrders();setInterval(()=>loadOrders(false),4000);try{const es=new EventSource('https://ntfy.sh/'+TOPIC+'/sse');es.onmessage=()=>{loadOrders(false);playBeep();}}catch(e){}speakLoud('Жүйе қосылды');}else alert('Пароль қате');}
-
 function getKassa(){try{return JSON.parse(localStorage.getItem('qj_kassa')||'{"total":0,"today":0,"todayCount":0,"date":""}')}catch{return {total:0,today:0,todayCount:0,date:""}}}
 function saveKassa(k){localStorage.setItem('qj_kassa',JSON.stringify(k));updateKassaUI();}
 function updateKassaUI(){const k=getKassa();const todayStr=new Date().toLocaleDateString();if(k.date!==todayStr){k.today=0;k.todayCount=0;k.date=todayStr;saveKassa(k);}document.getElementById('kTodayCount').textContent=k.todayCount;document.getElementById('kTodaySum').textContent=k.today+' тг';document.getElementById('kTotalSum').textContent=k.total+' тг';document.getElementById('kAvg').textContent=k.todayCount?Math.round(k.today/k.todayCount)+' тг':'0';}
-function addToKassa(price){const k=getKassa();const todayStr=new Date().toLocaleDateString();if(k.date!==todayStr){k.today=0;k.todayCount=0;k.date=todayStr;}const p=parseInt(price)||0;k.today+=p;k.total+=p;k.todayCount+=1;saveKassa(k);speakLoud(k.today+' тенге жиналды');}
+function addToKassa(price){const k=getKassa();const todayStr=new Date().toLocaleDateString();if(k.date!==todayStr){k.today=0;k.todayCount=0;k.date=todayStr;}const p=parseInt(price)||0;k.today+=p;k.total+=p;k.todayCount+=1;saveKassa(k);speakLoud(k.today+' тенге');}
 async function sendStatus(clientPhone, status, route){
-  const title = status==='jolda' ? 'JOLDA' : 'KELDI';
   const body = status==='jolda' ? `JOLDA|${route}|${clientPhone}` : `KELDI|${route}|${clientPhone}`;
-  await fetch('https://ntfy.sh/'+TOPIC+'?title='+title+'|'+clientPhone+'&priority=max',{method:'POST',body:body});
+  await fetch('https://ntfy.sh/'+TOPIC+'?title='+body+'&priority=max',{method:'POST',body:body});
   stopAlarm();
   alert(status==='jolda'?'Клиентке "Жолдамын" кетті!':'Клиентке "Келдім" кетті!');
 }
@@ -69,7 +66,9 @@ async function sendOrder(){
   document.getElementById('trackBox').style.display='block';
   document.getElementById('trackBar').style.width='15%';
   document.getElementById('trackTitle').textContent='⏳ Жүргізуші ізделуде...';
-  document.getElementById('trackText').textContent=f+' → '+t;
+  document.getElementById('trackText').textContent=f+' → '+t+' жіберілді';
+  document.getElementById('trackIcon').textContent='⏳';
+  document.getElementById('trackTimer').textContent='Күтіңіз';
   startTrackListen();
   Object.values(DRIVERS).forEach((wa,i)=>{setTimeout(()=>window.open(`https://wa.me/${wa}?text=QOSSHY%20JOLY:%20${encodeURIComponent(f+'→'+t+' '+price+'тг '+persons+'адам '+pay+' '+bag+' Клиент:'+ph)}`,'_blank'),i*700);});
 }
@@ -81,7 +80,7 @@ async function loadOrders(forceBeep){
     const old=parseInt(localStorage.getItem('qj_f')||'0');if(orders.length>old){playBeep();localStorage.setItem('qj_f',orders.length)}else if(forceBeep)playBeep();
     list.innerHTML='';orders.slice(0,30).forEach(o=>{const p=o.message.split('|');if(p.length<3)return;const [route,price,phone,time,persons,pay,bag]=p;
       const d=document.createElement('div');d.className='order-card';
-      d.innerHTML=`<b>${route}</b> • <span style="color:#FFB700">${price}тг</span><br><span class="badge" style="background:#0a84ff">${persons||''}</span><span class="badge" style="background:#FFB700;color:#111">${pay||''}</span><span class="badge" style="background:${bag?.includes('✔')?'#ff8c00':'#444'}">${bag||''}</span><br>📞 <a href="tel:${phone}" style="color:#25D366">${phone}</a> • ${time||''}<br><div style="margin-top:10px" class="row"><button onclick="sendStatus('${phone}','jolda','${route}'); addToKassa('${price}'); this.textContent='🚗 Жіберілді'; this.style.background='#0a6b3c';" style="background:#FFB700;color:#111;padding:10px;border-radius:10px;border:none;font-size:12px;font-weight:800">🟢 Алдым + Жолдамын</button><button onclick="sendStatus('${phone}','keldi','${route}')" style="background:#0a84ff;color:#fff;padding:10px;border-radius:10px;border:none;font-size:12px">📍 Келдім</button></div><div style="margin-top:6px" class="row"><a href="tel:${phone}" style="background:#fff;color:#111;padding:8px;border-radius:8px;text-decoration:none;font-size:12px;text-align:center">📞 Қоңырау</a><a href="https://wa.me/${phone.replace(/\+/g,'')}" style="background:#25D366;color:#fff;padding:8px;border-radius:8px;text-decoration:none;font-size:12px;text-align:center">WhatsApp</a></div>`;
+      d.innerHTML=`<b>${route}</b> • <span style="color:#FFB700">${price}тг</span><br><span class="badge" style="background:#0a84ff">${persons||''}</span><span class="badge" style="background:#FFB700;color:#111">${pay||''}</span><span class="badge" style="background:${bag?.includes('✔')?'#ff8c00':'#444'}">${bag||''}</span><br>📞 <a href="tel:${phone}" style="color:#25D366">${phone}</a> • ${time||''}<br><div style="margin-top:10px" class="row"><button onclick="sendStatus('${phone}','jolda','${route}'); addToKassa('${price}'); this.textContent='🚗 Жіберілді';" style="background:#FFB700;color:#111;padding:10px;border-radius:10px;border:none;font-size:12px;font-weight:800">🟢 Алдым + Жолдамын</button><button onclick="sendStatus('${phone}','keldi','${route}')" style="background:#0a84ff;color:#fff;padding:10px;border-radius:10px;border:none;font-size:12px">📍 Келдім</button></div>`;
       list.appendChild(d);
     });
   }catch(e){}
@@ -89,20 +88,19 @@ async function loadOrders(forceBeep){
 function startTrackListen(){
   const myPhone=localStorage.getItem('qj_my_phone'); if(!myPhone) return;
   let lastSpoken = localStorage.getItem('qj_last_status') || '';
+  if(timerInt) clearInterval(timerInt);
   setInterval(async()=>{
     try{
-      const res=await fetch('https://ntfy.sh/'+TOPIC+'/json?poll=1');const text=await res.text();const lines=text.trim().split('\n').filter(Boolean).reverse().slice(0,10);
+      const res=await fetch('https://ntfy.sh/'+TOPIC+'/json?poll=1');const text=await res.text();const lines=text.trim().split('\n').filter(Boolean).reverse().slice(0,15);
       for(let l of lines){try{
-        const j=JSON.parse(l); if(!j.message) continue; if(!j.message.includes(myPhone)) continue;
-        if(j.message === lastSpoken) continue;
+        const j=JSON.parse(l); if(!j.message) continue; if(!j.message.includes(myPhone)) continue; if(j.message === lastSpoken) continue;
         const box=document.getElementById('trackBox'),bar=document.getElementById('trackBar'),title=document.getElementById('trackTitle'),textEl=document.getElementById('trackText'),icon=document.getElementById('trackIcon');
-        box.style.display='block';
         if(j.message.startsWith('JOLDA')){
-          title.textContent='🚗 Ақжол жолда!';textEl.textContent='Сізге қарай келе жатыр, 10 минут';icon.textContent='🚗💨';bar.style.width='65%';startTimer(600); speakLoud('Көлік жолда, 10 минутта жетеді');
+          box.style.display='block'; title.textContent='🚗 Ақжол жолда!';textEl.textContent='Сізге қарай келе жатыр, 10 минут';icon.textContent='🚗💨';bar.style.width='65%';startTimer(600); speakLoud('Көлік жолда, 10 минутта жетеді');
           lastSpoken=j.message; localStorage.setItem('qj_last_status', j.message);
         }
         if(j.message.startsWith('KELDI')){
-          title.textContent='✅ Көлік келді!';textEl.textContent='Төмен түсіңіз, күтіп тұр';icon.textContent='📍🚕';bar.style.width='100%';if(timerInt)clearInterval(timerInt);document.getElementById('trackTimer').textContent='КЕЛДІ'; speakLoud('Көлік келді, шығыңыз');
+          box.style.display='block'; title.textContent='✅ Көлік келді!';textEl.textContent='Төмен түсіңіз, күтіп тұр';icon.textContent='📍🚕';bar.style.width='100%';if(timerInt)clearInterval(timerInt);document.getElementById('trackTimer').textContent='КЕЛДІ'; speakLoud('Көлік келді, шығыңыз');
           lastSpoken=j.message; localStorage.setItem('qj_last_status', j.message);
         }
       }catch(e){}}
@@ -113,5 +111,4 @@ function startTimer(sec){if(timerInt)clearInterval(timerInt);let s=sec;const el=
 const r=document.getElementById('r'),p=document.getElementById('p'),pt=document.getElementById('pt'),bagCb=document.getElementById('bag'),pDetail=document.getElementById('pDetail');
 function updPrice(){let base=parseInt(p.value)||1500;if(bagCb.checked)base+=300;pt.textContent=base+' тг';pDetail.textContent=bagCb.checked?'+300 багаж':'';r.value=p.value;}
 r.addEventListener('input',e=>{p.value=e.target.value;updPrice();});p.addEventListener('input',updPrice);bagCb.addEventListener('change',updPrice);
-(function(){const ph=localStorage.getItem('qj_my_phone'); if(ph && !isDriver){document.getElementById('trackBox').style.display='block'; startTrackListen();}})();
 </script></body></html>
