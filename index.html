@@ -1,11 +1,17 @@
 <!DOCTYPE html><html lang="kk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>QOSSHY JOLY</title><style>*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}body{background:#f6f6f3}.hero{background:#0f0f0f;color:#fff;padding:20px;text-align:center}.logo{width:80px;height:80px;background:#FFB700;border-radius:20px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:28px;color:#111}.box{background:#fff;border-radius:18px;padding:16px;margin:10px auto;max-width:780px;box-shadow:0 8px 24px rgba(0,0,0,.06)}.input{width:100%;padding:13px;border:2px solid #eee;border-radius:11px;font-size:14px;margin:5px 0;background:#fafafa}.row{display:flex;gap:6px}.row>*{flex:1}.btn{width:100%;padding:14px;border-radius:12px;font-weight:800;border:none;font-size:14px;cursor:pointer;margin-top:6px;display:block;text-align:center;text-decoration:none}.btn-green{background:#25D366;color:#fff}.btn-yellow{background:#FFB700;color:#111}.btn-blue{background:#0a84ff;color:#fff}.btn-dark{background:#222;color:#fff}.price{text-align:center;padding:12px;background:#111;color:#fff;border-radius:12px;margin:6px 0}.price b{font-size:28px;color:#FFB700}.order-card{background:#111;color:#fff;border-radius:14px;padding:14px;margin:10px 0;border-left:5px solid #FFB700}.badge{display:inline-block;padding:3px 7px;border-radius:6px;font-size:10px;font-weight:800;margin:2px}.kassa{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:6px;margin:8px 0}.kassa div{background:#222;border-radius:10px;padding:10px;text-align:center}.kassa b{color:#FFB700;font-size:16px;display:block}.kassa span{font-size:9px;color:#aaa}</style></head><body>
-<div class="hero"><div class="logo">QJ</div><h1>QOSSHY <span style="color:#FFB700">JOLY</span></h1><p style="color:#aaa;font-size:11px" id="topInfo">Қосшы такси • 2 жүргізуші • Kaspi • Багаж</p></div>
+<div class="hero"><div class="logo">QJ</div><h1>QOSSHY <span style="color:#FFB700">JOLY</span></h1><p style="color:#aaa;font-size:11px" id="topInfo">Қосшы такси • +7 708 742 6861</p></div>
 
-<div id="clientView"><div class="box"><h3>🚕 Қайда барасыз?</h3>
-<select class="input" id="from"><option>Қосшы</option><option>Қосшы - Лесная Поляна</option><option>Қосшы - Тайтөбе</option><option>Қосшы - Гүлдер</option><option>Астана</option></select>
-<input class="input" id="fromDetail" placeholder="Қосшыда қай жер? Мыс: 19 көше 15 үй, 2 подъезд">
-<select class="input" id="to"><option>Астана - Есіл</option><option>Астана - Мега Силк Вей</option><option>Астана - Хан Шатыр</option><option>Астана - Вокзал Нұрлы Жол</option><option>Астана - Азия Парк</option><option>Қосшы</option></select>
-<input class="input" id="toDetail" placeholder="Астанада қай жер? Мыс: Қабанбай 32">
+<div id="clientView"><div class="box"><h3>🚕 Қайда барасыз? Мекен-жайды өзіңіз жазыңыз</h3>
+<input class="input" id="from" list="fromList" placeholder="Қайдан? Мыс: Қосшы, Лесная 15/2, Гүлдер 10">
+<datalist id="fromList"><option value="Қосшы"><option value="Қосшы - Лесная Поляна"><option value="Қосшы - Тайтөбе"><option value="Қосшы - Гүлдер"><option value="Қосшы - Сиреневый Сад"></datalist>
+
+<input class="input" id="fromDetail" placeholder="Толық: көше, үй, подъезд, пәтер (міндетті)">
+
+<input class="input" id="to" list="toList" placeholder="Қайда? Мыс: Астана Мега, Хан Шатыр, Есіл">
+<datalist id="toList"><option value="Астана - Есіл"><option value="Астана - Мега Силк Вей"><option value="Астана - Хан Шатыр"><option value="Астана - Вокзал Нұрлы Жол"><option value="Астана - Азия Парк"><option value="Қосшы"></datalist>
+
+<input class="input" id="toDetail" placeholder="Толық: ЖК аты, мекен-жай, подъезд">
+
 <div class="row"><select class="input" id="persons"><option value="1">👤 1 адам</option><option value="2">👥 2 адам</option><option value="3">👥👤 3 адам</option><option value="4">👥👥 4 адам</option></select><select class="input" id="pay"><option value="Қолма-қол">💵 Қолма-қол</option><option value="Kaspi">💳 Kaspi</option></select></div>
 
 <label id="bagBox" style="display:flex;align-items:center;gap:10px;background:#fffbe6;border:2px solid #FFB700;padding:12px;border-radius:12px;margin:6px 0;cursor:pointer">
@@ -17,7 +23,7 @@
 <input type="range" min="500" max="6000" step="100" value="1500" id="r" style="width:100%;accent-color:#FFB700">
 <div class="price"><b id="pt">1500 тг</b> <span id="payBadge" style="font-size:11px;background:#FFB700;color:#111;padding:3px 8px;border-radius:6px">Қолма-қол</span> <span id="bagBadgePrice" style="font-size:11px;background:#333;color:#fff;padding:3px 8px;border-radius:6px;display:none">+300 багаж</span></div>
 <input type="number" class="input" id="p" value="1500" style="display:none">
-<input type="tel" class="input" id="ph" placeholder="Номер: +7 7XX XXX XX XX">
+<input type="tel" class="input" id="ph" placeholder="Номер: +7 708 742 6861">
 <button class="btn btn-green" onclick="sendOrder()">🟢 ТАКСИ ШАҚЫРУ</button>
 <p id="status" style="text-align:center;margin-top:10px;font-size:13px;color:#0a6b3c;font-weight:600"></p>
 
@@ -25,26 +31,26 @@
 <div style="font-size:36px" id="trackIcon">⏳</div><h3 id="trackTitle" style="color:#FFB700;margin:6px 0">⏳ Жүргізуші ізделуде</h3><p id="trackText" style="font-size:13px;color:#aaa"></p>
 <div style="background:#222;height:8px;border-radius:10px;margin:10px 0;overflow:hidden"><div id="trackBar" style="height:100%;width:15%;background:#FFB700;transition:1s"></div></div>
 <p id="trackTimer" style="font-weight:800">Күтіңіз</p>
-<a id="trackCall" href="#" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-top:8px;font-weight:800">📞 Қоңырау</a>
+<a id="trackCall" href="tel:+77087426861" style="display:block;background:#25D366;color:#fff;padding:12px;border-radius:10px;text-decoration:none;margin-top:8px;font-weight:800">📞 +7 708 742 6861</a>
 </div>
 </div></div>
 
-<div id="driverView" style="display:none"><div class="box" style="background:#111;color:#fff"><h3 style="color:#FFB700">👨‍✈️ Жүргізуші - 2 жүргізуші</h3>
-<select class="input" id="driverSelect" style="background:#222;color:#fff"><option value="akzhol">Ақжол - 778 095 9899</option><option value="driver2">2-ші - 705 662 3133</option></select>
+<div id="driverView" style="display:none"><div class="box" style="background:#111;color:#fff"><h3 style="color:#FFB700">👨‍✈️ Жүргізуші</h3>
+<select class="input" id="driverSelect" style="background:#222;color:#fff"><option value="akzhol">Ақжол - 708 742 6861 ✅</option><option value="driver2">2-ші - 705 662 3133</option></select>
 <div id="loginBox"><input type="password" id="driverPass" class="input" style="background:#222;color:#fff" placeholder="Пароль: akzhol2026"><button class="btn btn-yellow" onclick="checkPass()">Кіру</button></div>
 <div id="driverPanel" style="display:none">
 <div class="kassa"><div><b id="kCount">0</b><span>РЕЙС</span></div><div><b id="kCash">0</b><span>ҚОЛМА-ҚОЛ</span></div><div><b id="kKaspi">0</b><span>KASPI</span></div><div><b id="kTotal">0 тг</b><span>БАРЛЫҒЫ</span></div></div>
 <div class="row"><button class="btn btn-yellow" onclick="loadOrders(true)">🔄 Жаңарту</button><button class="btn btn-dark" onclick="stopAlarm()">🔇 Өшіру</button></div>
-<p style="font-size:10px;color:#0f0;margin-top:6px" id="liveStatus">● LIVE • Дауыс 1 рет қана</p>
+<p style="font-size:10px;color:#0f0;margin-top:6px">● LIVE • +7 708 742 6861</p>
 </div></div><div class="box" id="ordersBox" style="display:none"><h3>📋 Тапсырыстар <span id="cnt" style="background:#FFB700;color:#111;padding:2px 8px;border-radius:8px">0</span> <span id="driverNameTag" style="font-size:11px;color:#aaa"></span></h3><div id="ordersList"></div></div></div>
 
 <script>
 const TOPIC='qosshy-joly-akzhol-final';
-const DRIVERS={akzhol:{phone:'77780959899',name:'Ақжол',pass:'akzhol2026'}, driver2:{phone:'77056623133',name:'Ержан',pass:'driver2_2026'}};
+const DRIVERS={akzhol:{phone:'77087426861',name:'Ақжол',pass:'akzhol2026'}, driver2:{phone:'77056623133',name:'Ержан',pass:'driver2_2026'}};
 const params=new URLSearchParams(location.search);
 const driverKey=params.get('driver');
 const isDriver=driverKey!==null;
-if(isDriver){document.getElementById('clientView').style.display='none';document.getElementById('driverView').style.display='block';if(DRIVERS[driverKey]){document.getElementById('driverSelect').value=driverKey; document.getElementById('topInfo').textContent='Жүргізуші: '+DRIVERS[driverKey].name;}}
+if(isDriver){document.getElementById('clientView').style.display='none';document.getElementById('driverView').style.display='block';if(DRIVERS[driverKey]){document.getElementById('driverSelect').value=driverKey;}}
 
 let lastOrderId='',lastClientStatus='',timerInt=null,isAlarmOn=false,clientOrderTime=0,currentDriver=null;
 
@@ -63,13 +69,13 @@ function checkPass(){
   document.getElementById('loginBox').style.display='none';
   document.getElementById('driverPanel').style.display='block';
   document.getElementById('ordersBox').style.display='block';
-  document.getElementById('driverNameTag').textContent='• '+DRIVERS[sel].name;
+  document.getElementById('driverNameTag').textContent='• '+DRIVERS[sel].name+' • +7 '+DRIVERS[sel].phone;
   updateKassaUI();
   loadOrders(true);
   setInterval(()=>loadOrders(false),5000);
   try{const es=new EventSource('https://ntfy.sh/'+TOPIC+'/sse'); es.onmessage=()=>loadOrders(false);}catch(e){}
   speakOnce('Жүйе қосылды '+DRIVERS[sel].name);
- }else alert('Пароль қате! akzhol2026 немесе driver2_2026');
+ }else alert('Пароль қате!');
 }
 
 async function sendOrder(){
@@ -79,19 +85,19 @@ async function sendOrder(){
  const bagChecked=document.getElementById('bag').checked;
  const bagText=bagChecked?'Багаж+300':'Багаж жоқ';
  if(!ph||ph.length<10){alert('Номер жазыңыз!');return}
- if(!fDet){alert('Қосшыдағы мекен-жайды жазыңыз!');return}
+ if(!f||!t){alert('Қайдан-қайда жазыңыз!');return}
+ if(!fDet){alert('Толық мекен-жайды жазыңыз! Мыс: 15 үй 2 подъезд');return}
  clientOrderTime=Date.now();
  localStorage.setItem('qj_phone',ph); localStorage.setItem('qj_order_time',clientOrderTime); localStorage.removeItem('qj_last_status'); lastClientStatus='';
  const msg=`${f}→${t}|${totalPrice}|${ph}|${new Date().toLocaleTimeString()}|${persons}|${pay}|${bagText}|${fDet}|${tDet}|${clientOrderTime}`;
  await fetch('https://ntfy.sh/'+TOPIC,{method:'POST',body:msg});
- document.getElementById('status').innerHTML=`✅ Жіберілді! 2 жүргізуші көріп тұр`;
+ document.getElementById('status').innerHTML=`✅ Жіберілді! +7 708 742 6861 хабарласады`;
  document.getElementById('trackBox').style.display='block';
  document.getElementById('trackTitle').textContent='⏳ Жүргізуші ізделуде...'; document.getElementById('trackText').textContent=f+' → '+t; document.getElementById('trackIcon').textContent='⏳'; document.getElementById('trackBar').style.width='15%'; document.getElementById('trackTimer').textContent='Күтіңіз';
- document.getElementById('trackCall').href='tel:+7'+DRIVERS.akzhol.phone;
- document.getElementById('trackCall').textContent='📞 Ақжол: +7 '+DRIVERS.akzhol.phone;
+ document.getElementById('trackCall').href='tel:+77087426861';
  startClientListener();
- window.open(`https://wa.me/${DRIVERS.akzhol.phone}?text=QOSSHY:%20${encodeURIComponent(f+'→'+t+' '+totalPrice+'тг '+pay+' '+bagText+' '+ph+' '+fDet)}`,'_blank');
- setTimeout(()=>window.open(`https://wa.me/${DRIVERS.driver2.phone}?text=QOSSHY:%20${encodeURIComponent(f+'→'+t+' '+totalPrice+'тг '+pay+' '+bagText+' '+ph+' '+fDet)}`,'_blank'),800);
+ window.open(`https://wa.me/77087426861?text=QOSSHY:%20${encodeURIComponent(f+' '+fDet+' → '+t+' '+tDet+' | '+totalPrice+'тг '+pay+' '+bagText+' Клиент:'+ph)}`,'_blank');
+ setTimeout(()=>window.open(`https://wa.me/77056623133?text=QOSSHY:%20${encodeURIComponent(f+'→'+t+' '+totalPrice+'тг '+ph)}`,'_blank'),800);
 }
 
 async function loadOrders(force){
@@ -109,7 +115,7 @@ async function loadOrders(force){
    const isKaspi=pay.includes('Kaspi'); const hasBag=bag.includes('+')||bag.includes('300');
    const d=document.createElement('div'); d.className='order-card';
    d.innerHTML=`<div style="display:flex;justify-content:space-between"><b>${route}</b><span style="color:${isKaspi?'#0a84ff':'#FFB700'}">${price}тг • ${pay}</span></div>
-   <div style="font-size:11px;color:#ccc;margin:6px 0;background:#222;padding:8px;border-radius:8px">📍 ${fromDet||'—'}<br>🏁 ${toDet||'—'}</div>
+   <div style="font-size:11px;color:#ccc;margin:6px 0;background:#222;padding:8px;border-radius:8px">📍 Қайдан: ${fromDet||'—'}<br>🏁 Қайда: ${toDet||'—'}</div>
    <span class="badge" style="background:#0a84ff">${persons} адам</span><span class="badge" style="background:${isKaspi?'#0a84ff':'#FFB700'};color:${isKaspi?'#fff':'#111'}">${pay}</span>${hasBag?`<span class="badge" style="background:#ff3b30;color:#fff">🧳 ${bag}</span>`:`<span class="badge" style="background:#444">${bag}</span>`}<br>
    📞 <a href="tel:${phone}" style="color:#25D366;font-size:18px;font-weight:800">${phone}</a> • ${time}
    <div style="margin-top:10px;display:grid;grid-template-columns:1fr 1fr;gap:6px">
@@ -129,7 +135,7 @@ async function sendStatus(phone,status,route,price,pay){
  await fetch('https://ntfy.sh/'+TOPIC,{method:'POST',body:body});
  if(status==='jolda' && price){ addToKassa(price,pay); }
  stopAlarm();
- alert(status==='jolda' ? `✅ Жолдамын кетті! Табысқа қосылды` : '✅ Келдім кетті!');
+ alert(status==='jolda' ? `✅ Жолдамын кетті!` : '✅ Келдім кетті!');
 }
 
 function startClientListener(){
@@ -139,14 +145,13 @@ function startClientListener(){
   for(let l of lines){ try{
    const j=JSON.parse(l); if(!j.message) continue; if(j.message===lastClientStatus) continue; if(!j.message.includes(myPhone)) continue;
    const parts=j.message.split('|'); const msgTime=parseInt(parts[parts.length-1]||'0'); if(msgTime && msgTime < clientOrderTime) continue;
-   if(j.message.startsWith('JOLDA')){ document.getElementById('trackBox').style.display='block'; document.getElementById('trackTitle').textContent='🚗 Жүргізуші жолда!'; document.getElementById('trackText').textContent='10 минутта жетеді'; document.getElementById('trackIcon').textContent='🚗💨'; document.getElementById('trackBar').style.width='65%'; startTimer(600); speakOnce('Көлік жолда'); lastClientStatus=j.message; localStorage.setItem('qj_last_status',j.message); break; }
+   if(j.message.startsWith('JOLDA')){ document.getElementById('trackBox').style.display='block'; document.getElementById('trackTitle').textContent='🚗 Ақжол жолда!'; document.getElementById('trackText').textContent='10 минутта жетеді • +7 708 742 6861'; document.getElementById('trackIcon').textContent='🚗💨'; document.getElementById('trackBar').style.width='65%'; startTimer(600); speakOnce('Көлік жолда'); lastClientStatus=j.message; localStorage.setItem('qj_last_status',j.message); break; }
    if(j.message.startsWith('KELDI')){ document.getElementById('trackTitle').textContent='✅ Көлік келді!'; document.getElementById('trackText').textContent='Төмен түсіңіз'; document.getElementById('trackIcon').textContent='📍🚕'; document.getElementById('trackBar').style.width='100%'; if(timerInt) clearInterval(timerInt); document.getElementById('trackTimer').textContent='КЕЛДІ'; speakOnce('Көлік келді'); lastClientStatus=j.message; localStorage.setItem('qj_last_status',j.message); break; }
   }catch(e){} }
  }catch(e){} },4000);
 }
 function startTimer(sec){if(timerInt) clearInterval(timerInt); let s=sec; const el=document.getElementById('trackTimer'); timerInt=setInterval(()=>{s--; let m=Math.floor(s/60),ss=s%60; el.textContent=(m<10?'0':'')+m+':'+(ss<10?'0':'')+ss; if(s<=0){clearInterval(timerInt); el.textContent='Жақында';}},1000);}
 
-// БАҒА ЕСЕБІ ДҰРЫС - 2 РЕТ ҚОСПАЙДЫ
 const r=document.getElementById('r'),p=document.getElementById('p'),pt=document.getElementById('pt'),paySel=document.getElementById('pay'),payBadge=document.getElementById('payBadge'),bagCb=document.getElementById('bag'),bagInfo=document.getElementById('bagInfo'),bagBadgePrice=document.getElementById('bagBadgePrice'),bagBox=document.getElementById('bagBox');
 function updPrice(){
  let base=parseInt(r.value)||1500;
@@ -167,7 +172,6 @@ function updPrice(){
  }
 }
 r.addEventListener('input',updPrice);
-p.addEventListener('input',()=>{r.value=p.value>6000?6000:p.value; updPrice();});
 paySel.addEventListener('change',updPrice);
 bagCb.addEventListener('change',updPrice);
 updPrice();
