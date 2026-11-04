@@ -150,3 +150,45 @@ const r=document.getElementById('r'),p=document.getElementById('p'),pt=document.
 r.addEventListener('input',e=>{pt.textContent=e.target.value+' тг';p.value=e.target.value});
 p.addEventListener('input',e=>{pt.textContent=e.target.value+' тг';r.value=e.target.value});
 </script></body></html>
+<!-- БАГАЖ БӨЛІМІ - ТҮЗЕТІЛГЕН -->
+<label style="display:flex;align-items:center;gap:10px;background:#fffbe6;border:2px solid #FFB700;padding:12px;border-radius:12px;margin:6px 0;cursor:pointer">
+<input type="checkbox" id="bag" style="width:22px;height:22px;accent-color:#FFB700"> 
+<span style="font-weight:800">🧳 Багаж бар? (+300 тг)</span>
+<span id="bagInfo" style="font-size:11px;color:#888;margin-left:auto">жоқ</span>
+</label>
+const r=document.getElementById('r'),p=document.getElementById('p'),pt=document.getElementById('pt'),paySel=document.getElementById('pay'),payBadge=document.getElementById('payBadge'),bagCb=document.getElementById('bag'),bagInfo=document.getElementById('bagInfo');
+
+function updPrice(){
+ let base=parseInt(p.value)||1500;
+ // Егер багаж басылса +300, бірақ 2 рет қосылып кетпес үшін
+ let realBase = base;
+ // Егер чек басылған болса және бағада +300 жоқ болса қосу логикасы
+ // Оңай жолы: range-тен бөлек есептейміз
+ let rangeVal = parseInt(r.value)||1500;
+ let total = rangeVal + (bagCb.checked ? 300 : 0);
+ 
+ pt.textContent=total+' тг';
+ p.value=total;
+ payBadge.textContent=paySel.value;
+ payBadge.style.background=paySel.value.includes('Kaspi')?'#0a84ff':'#FFB700';
+ payBadge.style.color=paySel.value.includes('Kaspi')?'#fff':'#111';
+ bagInfo.textContent=bagCb.checked ? '✅ +300тг қосылды' : 'жоқ';
+ bagInfo.style.color=bagCb.checked ? '#0a84ff' : '#888';
+ if(bagCb.checked){
+   bagInfo.parentElement.style.background='#e6f0ff';
+   bagInfo.parentElement.style.borderColor='#0a84ff';
+ }else{
+   bagInfo.parentElement.style.background='#fffbe6';
+   bagInfo.parentElement.style.borderColor='#FFB700';
+ }
+}
+
+r.addEventListener('input',e=>{p.value=e.target.value; updPrice();});
+p.addEventListener('input',()=>{r.value=p.value>6000?6000:p.value; updPrice();});
+paySel.addEventListener('change',updPrice);
+bagCb.addEventListener('change',updPrice);
+updPrice();
+// Карточка ішіндегі багаж бейджі
+const bagBadge = bag.includes('бар') || bag.includes('+') 
+? `<span class="badge" style="background:#ff3b30;color:#fff">🧳 ${bag} +300тг</span>` 
+: `<span class="badge" style="background:#444">${bag}</span>`;
